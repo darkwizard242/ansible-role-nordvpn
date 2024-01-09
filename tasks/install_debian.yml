@@ -1,0 +1,34 @@
+---
+# tasks file for nordvpn | Debian/Ubuntu Family
+
+- name: Debian/Ubuntu Family | Install python3-apt
+  ansible.builtin.apt:
+    name: python3-apt
+    state: present
+    force_apt_get: yes
+    update_cache: yes
+
+- name: Debian/Ubuntu Family | Installing {{ nordvpn_pre_reqs_debian }} for {{ nordvpn_app_name }}
+  ansible.builtin.apt:
+    name: "{{ nordvpn_pre_reqs_debian }}"
+    state: "{{ nordvpn_pre_reqs_debian_desired_state }}"
+    force_apt_get: yes
+
+- name: Debian/Ubuntu Family | Add gpg signing key for {{ nordvpn_app_name }}
+  ansible.builtin.apt_key:
+    url: "{{ nordvpn_repo_debian_gpg_key_url }}"
+    state: present
+
+- name: Debian/Ubuntu Family | Adding repository {{ nordvpn_repo_debian }}
+  ansible.builtin.apt_repository:
+    repo: "{{ nordvpn_repo_debian }}"
+    filename: "{{ nordvpn_repo_debian_filename }}"
+    state: "{{ nordvpn_repo_debian_desired_state }}"
+    update_cache: yes
+
+- name: Debian/Ubuntu Family | Installing {{ nordvpn_app_name }}
+  ansible.builtin.apt:
+    name: "{{ nordvpn_app_name }}"
+    state: "{{ nordvpn_desired_state }}"
+    force_apt_get: yes
+    update_cache: yes

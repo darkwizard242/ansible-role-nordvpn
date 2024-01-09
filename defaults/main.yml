@@ -1,0 +1,15 @@
+---
+# defaults file for nordvpn
+
+# Generic Variables
+nordvpn_app_name: nordvpn
+nordvpn_desired_state: present
+
+# Debian Family Variables
+nordvpn_pre_reqs_debian:
+  - gnupg2
+nordvpn_pre_reqs_debian_desired_state: present
+nordvpn_repo_debian_gpg_key_url: "https://repo.nordvpn.com/gpg/nordvpn_public.asc"
+nordvpn_repo_debian: "deb https://repo.nordvpn.com//deb/nordvpn/debian stable main"
+nordvpn_repo_debian_filename: "{{ nordvpn_app_name }}"
+nordvpn_repo_debian_desired_state: present
