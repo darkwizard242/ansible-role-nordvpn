@@ -13,3 +13,10 @@ nordvpn_repo_debian_gpg_key_url: "https://repo.nordvpn.com/gpg/nordvpn_public.as
 nordvpn_repo_debian: "deb https://repo.nordvpn.com//deb/nordvpn/debian stable main"
 nordvpn_repo_debian_filename: "{{ nordvpn_app_name }}"
 nordvpn_repo_debian_desired_state: present
+
+# User specific:
+nordvpn_add_nonroot_users: false
+nordvpn_nonroot_users:
+  - darkwizard242
+  - ubuntu
+nordvpn_group: nordvpn

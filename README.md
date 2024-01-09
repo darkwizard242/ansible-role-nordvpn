@@ -27,6 +27,13 @@ nordvpn_repo_debian_gpg_key_url: "https://repo.nordvpn.com/gpg/nordvpn_public.as
 nordvpn_repo_debian: "deb https://repo.nordvpn.com//deb/nordvpn/debian stable main"
 nordvpn_repo_debian_filename: "{{ nordvpn_app_name }}"
 nordvpn_repo_debian_desired_state: present
+
+# User specific:
+nordvpn_add_nonroot_users: false
+nordvpn_nonroot_users:
+  - darkwizard242
+  - ubuntu
+nordvpn_group: nordvpn
 ```
 
 ### Variables table:
@@ -38,10 +45,12 @@ nordvpn_desired_state                 | State of the nordvpn_app_name package (i
 nordvpn_pre_reqs_debian               | Package required by nordvpn on Debain based systems.
 nordvpn_pre_reqs_debian_desired_state | State of the nordvpn_pre_reqs_debian_desired_state packages. Whether to install, verify if available or to uninstall (i.e. ansible apt module values: `present`, `latest`, or `absent`)
 nordvpn_repo_debian_gpg_key_url       | nordvpn GPG required on Debian based systems.
-nordvpn_repo_debian_gpg_key_keyring   | nordvpn Keyring file to store GPG key in.
 nordvpn_repo_debian                   | Repository URL for Debian based systems.
 nordvpn_repo_debian_filename          | Name of the repository file that will be stored at `/etc/apt/sources.list.d/` on Debian based systems. Defaults to the variable value for "{{ nordvpn_app_name }}" which is `nordvpn` by default.
 nordvpn_repo_debian_desired_state     | State of Debian family repository file for nordvpn.
+nordvpn_add_nonroot_users             | Boolean to declare whether to add non-root users to `nordvpn` group.
+nordvpn_nonroot_users                 | List of users to add to `nordvpn` group.
+nordvpn_group                         | Group name of `nordvpn`
 
 ## Dependencies
 
