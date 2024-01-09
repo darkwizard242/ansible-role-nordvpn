@@ -1,0 +1,28 @@
+---
+galaxy_info:
+  role_name: nordvpn
+  author: darkwizard242
+  description: Installs nordvpn client on Debian-based operating systems.
+  company: none
+  license: MIT
+  min_ansible_version: "2.4"
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - jammy
+        - focal
+        - bionic
+    - name: Debian
+      versions:
+        - bullseye
+        - buster
+
+  galaxy_tags:
+    - nordvpn
+    - os
+    - system
+    - vpn
+    - linux
+
+dependencies: []
