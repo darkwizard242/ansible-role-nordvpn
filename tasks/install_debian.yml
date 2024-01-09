@@ -32,3 +32,12 @@
     state: "{{ nordvpn_desired_state }}"
     force_apt_get: yes
     update_cache: yes
+
+- name: Add users "{{ nordvpn_nonroot_users }}" to group "{{ nordvpn_group }}" if specified.
+  become: true
+  ansible.builtin.user:
+    name: "{{ item }}"
+    groups: "{{ nordvpn_group }}"
+    append: yes
+  with_items: "{{ nordvpn_nonroot_users }}"
+  when: nordvpn_add_nonroot_users
